@@ -19,8 +19,8 @@ const appleImage = new Image();
 appleImage.src = 'apple.png'; // Ensure apple.png is in the same directory
 
 // Gravity and Damping
-let gravity = 1;
-const damping = 50; // Energy loss on bounce (less reactive collisions)
+let gravity = 0.5;
+const damping = 0.8; // Energy loss on bounce (less reactive collisions)
 
 // Apple Class
 class Apple {
@@ -237,4 +237,3 @@ function startAnimation() {
 
 backgroundImage.onload = startAnimation;
 appleImage.onload = startAnimation;
-
