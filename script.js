@@ -20,7 +20,7 @@ appleImage.src = 'apple.png'; // Ensure apple.png is in the same directory
 
 // Gravity and Damping
 let gravity = 1;
-const damping = 0.5;
+const damping = 0.1;
 
 // Apple Class
 class Apple {
