@@ -66,7 +66,7 @@ class Apple {
 
 // Create Apples
 const apples = [];
-const maxApples = window.innerWidth < 768 ? 10 : 50; // Fewer apples on smaller screens
+const maxApples = window.innerWidth < 768 ? 10 : 20; // Fewer apples on smaller screens
 for (let i = 0; i < maxApples; i++) {
   const size = 50;
   const x = Math.random() * (canvas.width - size);
