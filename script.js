@@ -20,7 +20,7 @@ appleImage.src = 'apple.png'; // Ensure apple.png is in the same directory
 
 // Gravity and Damping
 let gravity = 1;
-const damping = 0.5; // Energy loss on bounce (less reactive collisions)
+const damping = 5; // Energy loss on bounce (less reactive collisions)
 
 // Apple Class
 class Apple {
