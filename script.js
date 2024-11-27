@@ -13,14 +13,14 @@ window.addEventListener('resize', () => {
 
 // Background and Apple Images
 const backgroundImage = new Image();
-backgroundImage.src = 'background3.jpg'; // Ensure background.jpg is in the same directory
+backgroundImage.src = 'background.jpg'; // Ensure background.jpg is in the same directory
 
 const appleImage = new Image();
 appleImage.src = 'apple.png'; // Ensure apple.png is in the same directory
 
 // Gravity and Damping
-let gravity = 1;
-const damping = 0.7;
+let gravity = 0.5;
+const damping = 0.8; // Energy loss on bounce (less reactive collisions)
 
 // Apple Class
 class Apple {
@@ -64,15 +64,15 @@ class Apple {
   }
 }
 
-// Create Apples
+// Create Apples (Reduced Number)
 const apples = [];
-const maxApples = window.innerWidth < 768 ? 5: 20; // Fewer apples on smaller screens
+const maxApples = 5; // Fewer apples for a simpler setup
 for (let i = 0; i < maxApples; i++) {
   const size = 50;
   const x = Math.random() * (canvas.width - size);
   const y = Math.random() * (canvas.height / 2);
-  const dx = (Math.random() - 0.5) * 5;
-  const dy = Math.random() * -5;
+  const dx = (Math.random() - 0.5) * 3; // Reduced initial velocity
+  const dy = Math.random() * -3;
   apples.push(new Apple(x, y, size, dx, dy));
 }
 
@@ -153,7 +153,7 @@ canvas.addEventListener('touchend', () => {
   }
 });
 
-// Collision Detection
+// Collision Detection (Less Reactive)
 function resolveCollisions() {
   for (let i = 0; i < apples.length; i++) {
     for (let j = i + 1; j < apples.length; j++) {
@@ -170,14 +170,14 @@ function resolveCollisions() {
         const overlap = (apple1.size - distance) / 2;
         const angle = Math.atan2(dy, dx);
 
-        apple1.x -= Math.cos(angle) * overlap;
-        apple1.y -= Math.sin(angle) * overlap;
-        apple2.x += Math.cos(angle) * overlap;
-        apple2.y += Math.sin(angle) * overlap;
+        apple1.x -= Math.cos(angle) * overlap * 0.5; // Reduced reaction
+        apple1.y -= Math.sin(angle) * overlap * 0.5;
+        apple2.x += Math.cos(angle) * overlap * 0.5;
+        apple2.y += Math.sin(angle) * overlap * 0.5;
 
-        // Exchange velocities
-        [apple1.dx, apple2.dx] = [apple2.dx, apple1.dx];
-        [apple1.dy, apple2.dy] = [apple2.dy, apple1.dy];
+        // Exchange velocities (gentler effect)
+        [apple1.dx, apple2.dx] = [apple2.dx * 0.7, apple1.dx * 0.7];
+        [apple1.dy, apple2.dy] = [apple2.dy * 0.7, apple1.dy * 0.7];
       }
     }
   }
@@ -200,10 +200,10 @@ function animate() {
 // Gravity Slider
 const sliderContainer = document.createElement("div");
 sliderContainer.style.position = "absolute";
-sliderContainer.style.top = "30px";
-sliderContainer.style.left = "30px";
+sliderContainer.style.top = "10px";
+sliderContainer.style.left = "10px";
 sliderContainer.style.background = "rgba(0, 0, 0, 0.5)";
-sliderContainer.style.padding = "30px";
+sliderContainer.style.padding = "10px";
 sliderContainer.style.borderRadius = "5px";
 sliderContainer.style.color = "white";
 sliderContainer.style.zIndex = "1000";
@@ -238,5 +238,3 @@ function startAnimation() {
 backgroundImage.onload = startAnimation;
 appleImage.onload = startAnimation;
 
-backgroundImage.onload = startAnimation;
-appleImage.onload = startAnimation;
