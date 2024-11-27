@@ -19,7 +19,7 @@ const appleImage = new Image();
 appleImage.src = 'apple.png'; // Ensure apple.png is in the same directory
 
 // Gravity and Damping
-let gravity = 1;
+let gravity = 2;
 const damping = 0.1;
 
 // Apple Class
