@@ -19,8 +19,8 @@ const appleImage = new Image();
 appleImage.src = 'apple.png'; // Ensure apple.png is in the same directory
 
 // Gravity and Damping
-let gravity = 0.5;
-const damping = 0.9; // Energy loss on bounce (less reactive collisions)
+let gravity = 1;
+const damping = 0.5; // Energy loss on bounce (less reactive collisions)
 
 // Apple Class
 class Apple {
@@ -68,7 +68,7 @@ class Apple {
 const apples = [];
 const maxApples = 5; // Fewer apples for a simpler setup
 for (let i = 0; i < maxApples; i++) {
-  const size = 20;
+  const size = 50;
   const x = Math.random() * (canvas.width - size);
   const y = Math.random() * (canvas.height / 2);
   const dx = (Math.random() - 0.5) * 3; // Reduced initial velocity
