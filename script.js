@@ -20,7 +20,7 @@ appleImage.src = 'apple.png'; // Ensure apple.png is in the same directory
 
 // Gravity and Damping
 let gravity = 1;
-const damping = 2;
+const damping = 0.5;
 
 // Apple Class
 class Apple {
@@ -66,7 +66,7 @@ class Apple {
 
 // Create Apples
 const apples = [];
-const maxApples = window.innerWidth < 768 ? 10 : 100; // Fewer apples on smaller screens
+const maxApples = window.innerWidth < 768 ? 10 : 50; // Fewer apples on smaller screens
 for (let i = 0; i < maxApples; i++) {
   const size = 50;
   const x = Math.random() * (canvas.width - size);
